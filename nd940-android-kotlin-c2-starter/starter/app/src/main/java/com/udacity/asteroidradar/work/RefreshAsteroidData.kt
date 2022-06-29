@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.work
 
 import android.content.Context
+import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.udacity.asteroidradar.api.AsteroidApi
@@ -46,12 +47,13 @@ class RefreshAsteroidData(appContext: Context,
 
                         CoroutineScope(Dispatchers.IO).launch {
                             asteroidDatabaseDao.insert(asteroidData)
+                            Log.i("Data", "ran")
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.i("Database Failed", "The database has failed")
                 }
 
             })

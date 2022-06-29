@@ -2,6 +2,7 @@ package com.udacity.asteroidradar
 
 import android.app.Application
 import android.os.Build
+import android.util.Log
 import androidx.work.*
 import com.udacity.asteroidradar.work.RefreshAsteroidData
 import kotlinx.coroutines.CoroutineScope
@@ -31,12 +32,26 @@ class AsteroidApplicationClass: Application() {
                 }
             }.build()
 
+        val uploadWorkRequest: WorkRequest =
+            OneTimeWorkRequestBuilder<RefreshAsteroidData>()
+                .build()
+
         val repeatingRequest = PeriodicWorkRequestBuilder<RefreshAsteroidData>(1, TimeUnit.DAYS)
             .setConstraints(constraints)
             .build()
+
+        val db = applicationContext.getDatabasePath("asteroid_database")
         WorkManager.getInstance().enqueueUniquePeriodicWork(
             RefreshAsteroidData.WORK_NAME,
             ExistingPeriodicWorkPolicy.KEEP,
             repeatingRequest)
+            Log.i("database", "ran")
+        if(db.exists() == false){
+            WorkManager
+                .getInstance()
+                .enqueue(uploadWorkRequest)
+
+            Log.i("database", db.toString())
+        }
     }
 }

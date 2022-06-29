@@ -21,7 +21,7 @@ abstract class AsteroidDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         AsteroidDatabase::class.java,
-                        "sleep_history_database"
+                        "asteroid_database"
                     ).fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
