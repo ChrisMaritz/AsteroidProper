@@ -8,8 +8,6 @@ import com.udacity.asteroidradar.api.AsteroidApi
 import com.udacity.asteroidradar.api.parseAsteroidsJsonResult
 import com.udacity.asteroidradar.data.AsteroidData
 import com.udacity.asteroidradar.data.AsteroidDatabase
-import com.udacity.asteroidradar.data.AsteroidDatabaseDao
-import com.udacity.asteroidradar.main.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

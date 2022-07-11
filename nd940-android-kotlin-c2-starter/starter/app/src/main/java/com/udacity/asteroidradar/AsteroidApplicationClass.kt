@@ -45,13 +45,11 @@ class AsteroidApplicationClass: Application() {
             RefreshAsteroidData.WORK_NAME,
             ExistingPeriodicWorkPolicy.KEEP,
             repeatingRequest)
-            Log.i("database", "ran")
-        if(db.exists() == false){
-            WorkManager
-                .getInstance()
-                .enqueue(uploadWorkRequest)
 
-            Log.i("database", db.toString())
-        }
+        WorkManager
+            .getInstance()
+            .enqueue(uploadWorkRequest)
+
+
     }
 }

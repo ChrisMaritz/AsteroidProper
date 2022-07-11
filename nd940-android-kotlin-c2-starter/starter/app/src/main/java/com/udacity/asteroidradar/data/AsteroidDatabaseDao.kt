@@ -11,8 +11,8 @@ interface AsteroidDatabaseDao{
     @Update
     suspend fun update(asteroidData: AsteroidData)
 
-    @Query("SELECT * from asteroid_table WHERE id = :key")
-    suspend fun get(key:Long):AsteroidData?
+    @Query("SELECT * from asteroid_table")
+    suspend fun get():MutableList<AsteroidData?>
 
     @Query("DELETE FROM asteroid_table")
     suspend fun clear()
