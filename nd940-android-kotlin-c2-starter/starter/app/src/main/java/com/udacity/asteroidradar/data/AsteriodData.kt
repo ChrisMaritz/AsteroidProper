@@ -23,6 +23,22 @@ data class AsteroidData(
     var kmPerSecond : Double,
 
     @ColumnInfo(name = "astro_miss_distance")
-    var astroMissDistance : Double
+    var astroMissDistance : Double,
 
     )
+
+@Entity(tableName = "image_of_day")
+data class ImageOfDay(
+    @PrimaryKey
+    var id : Long,
+
+    @ColumnInfo(name = "title")
+    var title : String,
+
+    @ColumnInfo(name = "media_type")
+    var mediaType : String,
+
+    @ColumnInfo(name = "image")
+    var image : String,
+
+)

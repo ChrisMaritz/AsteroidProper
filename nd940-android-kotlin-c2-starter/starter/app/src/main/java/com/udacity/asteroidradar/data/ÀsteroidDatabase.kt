@@ -32,3 +32,30 @@ abstract class AsteroidDatabase: RoomDatabase() {
         }
     }
 }
+@Database(entities = [ImageOfDay::class], version = 1,  exportSchema = false)
+abstract class ImageDatabase: RoomDatabase() {
+    abstract val imageOfDayDao : ImageOfDayDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE2: ImageDatabase? = null
+
+        fun getInstance(context: Context):ImageDatabase?{
+            synchronized(this){
+                var instance = INSTANCE2
+
+                if(instance == null){
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        ImageDatabase::class.java,
+                        "image_database"
+                    ).fallbackToDestructiveMigration()
+                        .build()
+                    INSTANCE2 = instance
+                }
+
+                return instance
+            }
+        }
+    }
+}

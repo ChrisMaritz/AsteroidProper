@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.data
 
 import androidx.room.*
+import retrofit2.http.GET
 
 @Dao
 interface AsteroidDatabaseDao{
@@ -14,8 +15,20 @@ interface AsteroidDatabaseDao{
     @Query("SELECT * from asteroid_table")
     suspend fun get():MutableList<AsteroidData?>
 
+    @Query("SELECT * from asteroid_table Where id == :id1")
+    suspend fun getAsteroid(id1 : Int):AsteroidData
+
     @Query("DELETE FROM asteroid_table")
     suspend fun clear()
 
 
+}
+
+@Dao
+interface ImageOfDayDao{
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(imageOfDay: ImageOfDay)
+
+    @Query("SELECT * from image_of_day")
+    suspend fun get():ImageOfDay
 }

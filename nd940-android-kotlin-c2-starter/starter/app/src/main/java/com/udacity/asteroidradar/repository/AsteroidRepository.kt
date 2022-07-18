@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.repository
 
 import android.net.Network
+import android.util.Log
 import com.udacity.asteroidradar.api.AsteroidApi
 import com.udacity.asteroidradar.api.AsteroidApiService
 import com.udacity.asteroidradar.api.parseAsteroidsJsonResult
@@ -41,7 +42,7 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.i("API", "API failed")
             }
 
         })
