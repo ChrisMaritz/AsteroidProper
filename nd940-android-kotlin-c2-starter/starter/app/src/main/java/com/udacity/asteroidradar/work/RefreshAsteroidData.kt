@@ -40,12 +40,15 @@ class RefreshAsteroidData(appContext: Context,
                     for (items in itsHere){
                         var asteroidData = AsteroidData(
                             items.id,
+                            items.codename,
+                            items.closeApproachDate,
                             items.absoluteMagnitude,
                             items.estimatedDiameter,
                             items.isPotentiallyHazardous,
                             items.relativeVelocity,
-                            items.distanceFromEarth
-                        )
+                            items.distanceFromEarth,
+
+                            )
 
                         CoroutineScope(Dispatchers.IO).launch {
                             asteroidDatabaseDao.insert(asteroidData)

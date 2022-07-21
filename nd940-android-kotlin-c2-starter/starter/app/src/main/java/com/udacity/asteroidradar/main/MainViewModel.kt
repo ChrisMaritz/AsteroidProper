@@ -8,4 +8,5 @@ class MainViewModel() : ViewModel() {
     // and is functional in the way it is required. If one see something is required here
     // please let me know. in the project descriptions the viewmodel was only stated as
     // a recommendation so I do hope everything is as needed.
+    
 }

@@ -42,8 +42,11 @@ class DetailFragment : Fragment() {
                     fromBundle(requireArguments()).
                     selectedAsteroid.relativeVelocity.toString()
 
-        binding.activityMainImageOfTheDay.contentDescription =
-            "Image of an asteroid indicating wether it is hazardous or not"
+        if(asteroid.isPotentiallyHazardous){
+            binding.activityMainImageOfTheDay.contentDescription =  "Image of an asteroid indicating it is Hazardous"
+        }else{
+            binding.activityMainImageOfTheDay.contentDescription = "Image of an asteroid indicating it is not Hazardous"
+        }
 
         binding.helpButton.setOnClickListener {
             displayAstronomicalUnitExplanationDialog()

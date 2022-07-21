@@ -45,7 +45,6 @@ class MainFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-
         var database = AsteroidDatabase.getInstance(requireContext())
         var asteroidDatabaseDao = database.asteroidDatabaseDao
         var databaseImage = ImageDatabase.getInstance(requireContext())
@@ -76,6 +75,7 @@ class MainFragment : Fragment() {
 
         return binding.root
     }
+
     fun iterateThrough(){
 
         viewLifecycleOwner.lifecycleScope.launch {

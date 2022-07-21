@@ -43,12 +43,9 @@ class Adapter(var asteroidDatabaseDao: AsteroidDatabaseDao) : RecyclerView.Adapt
         CoroutineScope(Dispatchers.Main).launch {
             val asteroid = asteroidDatabaseDao.getAsteroid(dataList.get(position).name)
             var asteroid2 = Asteroid(
-                asteroid.id,
-                asteroid.absoluteMagnitude,
-                asteroid.estimatedDiameterMax,
-                asteroid.kmPerSecond,
-                asteroid.astroMissDistance,
-                asteroid.PotentialHazard
+                asteroid.id, asteroid.codeName, asteroid.formattedDate, asteroid.absoluteMagnitude,
+                asteroid.estimatedDiameterMax, asteroid.kmPerSecond, asteroid.astroMissDistance, asteroid.PotentialHazard
+
             )
             holder.itemView.setOnClickListener { view ->
                 Navigation.findNavController(view).navigate(MainFragmentDirections.actionShowDetail(asteroid2))
@@ -62,6 +59,11 @@ class Adapter(var asteroidDatabaseDao: AsteroidDatabaseDao) : RecyclerView.Adapt
 
         }else{
             "Not Hazardous"
+        }
+        if(dataList.get(position).hazard){
+            holder.itemView.status_image.setBackgroundResource(R.drawable.ic_status_potentially_hazardous)
+        }else{
+            holder.itemView.status_image.setBackgroundResource(R.drawable.ic_status_normal)
         }
         holder.itemView.is_hazourdous.contentDescription = if(dataList.get(position).hazard){
             "Text indicating if asteroid hazardous, it is here"
