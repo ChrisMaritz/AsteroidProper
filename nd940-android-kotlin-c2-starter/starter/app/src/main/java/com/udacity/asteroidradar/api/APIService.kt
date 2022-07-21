@@ -26,13 +26,13 @@ val BASE_URL2 = "https://api.nasa.gov/planetary/"
 
 interface AsteroidApiService {
 
-    @GET("feed?api_key=dbfpraEVQSdqX6Iy1H0zoQcAwtNUTSxqf7IUGlpz")
+    @GET("feed?api_key=")
     fun getProperties():
             Call<String>
 }
 
 interface ImageApiService {
-    @GET("apod?api_key=dbfpraEVQSdqX6Iy1H0zoQcAwtNUTSxqf7IUGlpz")
+    @GET("apod?api_key=")
     fun getImage():
             Call<String>
 }
