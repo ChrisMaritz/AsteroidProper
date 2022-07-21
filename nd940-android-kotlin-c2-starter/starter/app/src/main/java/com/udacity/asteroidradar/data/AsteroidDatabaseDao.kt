@@ -12,7 +12,7 @@ interface AsteroidDatabaseDao{
     @Update
     suspend fun update(asteroidData: AsteroidData)
 
-    @Query("SELECT * from asteroid_table")
+    @Query("SELECT * from asteroid_table ORDER by formatted_date")
     suspend fun get():MutableList<AsteroidData?>
 
     @Query("SELECT * from asteroid_table Where id == :id1")
